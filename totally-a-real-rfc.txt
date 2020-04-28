@@ -1,0 +1,75 @@
+CBPS DB RFC #1337
+
+cbpsdb is a comma seperated values file, it shall have the following key:
+id,title,credits,icon0,download,download_mirror,download_readme,git,version,config_type,options,type,depends,visible
+- types/terminology.
+Unspecified values shall be defined with a string of 'none'
+'string' - 1 or more characters, (eg: 'Hello World!')
+'boolean' - a string containing either 'True' or 'False'
+'list' - 1 or more string values seperated by '|'.
+	if you need to acturally use the '|' in a string then escape with '||'
+'int' a numerical value, such as '0' or '1125'
+
+- entries
+
+'id' a unique string that should never change,
+	ideally it would be set to the TITLE_ID of your application,
+	if there is no TITLE_ID, use the main executables module_name.
+	and if all else fails, specify crc32() (hex encoded) of the entries TITLE
+	in the event of a conflict append _01 to the id and increment for each conflicting id.
+
+'title' a string of the TITLE specifed in param.sfo
+
+'credits' a string containing infomration on who created this software
+
+'icon0' a string containing a direct URL to download a (128x128) icon0.png file.
+	if none exists, leave it unspecified,
+	
+'download' a string contianing a URL to directly download the VPK/Skprx/Suprx
+	this should not be a "download page" but rather the actural data
+	(eg: https://github.com/KuromeSan/DolcePolce/releases/download/v1.0/DolcePolce.suprx)
+	
+'download_mirror' a list of alternative download links in the event the main link is down 
+	(eg: https://bitbucket.org/SilicaAndPina/dolcepolce/downloads/DolcePolce.suprx|https://store.brewology.com/vita/get/homebrew.php?id=773&fid=4708)
+	the mirror links will be tried in sequental order.if there are no mirrors avalible, leave this unspecified.
+
+'download_readme' a direct link to the README file, (eg: https://bitbucket.org/SilicaAndPina/dolcepolce/raw/4399a37276fcaae5b252998ac219a5cc6c1a23d4/README.md
+	if there is none. leave unspecified	
+
+'version' a int starting at 0 and increments each time an entry is updated.
+
+'git' should be the direct link to the .git repository (if avalible) 
+	if the homebrew is not using GIT then it should be a direct link to the source code. 
+	if thats not avalible leave unspecified.
+
+'config_type' will define which config to place the plugin into, accepted values are 'TAI','BOOT
+	'TAI' will put it into the users perferered TaiHen configuration file (eg: "ux0:/tai/config.txt" or "ur0:/tai/config.txt")
+	'BOOT' will place it into the enso boot configuration file (ur0:/tai/boot_config.txt)
+	when 'type' is 'DATA' or 'VPK', leave this unspecified.
+
+'options' a list containing where to place the plugin in the configuration file.
+	when 'type' is 'DATA' specify a string containing the path to extract the data files too.
+	for 'config_type' of 'TAI' specify a list containing what modules to load under (eg: '*PCSI00009|*PCSI00007')
+	for 'config_type' of 'BOOT' specify a list containing the line to insert it under and what command to use 
+		example if you specified 'load os0:/kd/npdrm.skprx|- load' then the result would be like 
+			load os0:/kd/npdrm.skprx
+			- load ur0:/tai/your-module.skprx
+
+'type' a string of the type, accepted values are 'VPK','PLUGIN','DATA'
+	'VPK' is for vita apps, when used do not specify 'config_type' and 'options'
+	'PLUGIN' is for vita plugins, (see config_type and options)
+	'DATA' is for other data files, should be ZIP formatted. specify where to extract in 'options'
+		for example, you could include a PSP or a translation pack by specifiying 'options' as 'ux0:/repatch' or 'ux0:/pspemu/game',
+		you could also specify 'depends' value as 'rePatch' in this case too.
+
+'depends' a list specifying other titleid's that are required to be installed first before this one. (eg 'PCSI00009|PCSI00007')
+	if none are needed, leave unspecified.
+
+'visible' a boolean value specifying wether or not clients should display this entry in the main listing or not.
+
+Example VPK Entry:
+ACTIVATE0,activate.vpk,Silica & Zecoaxco,https://bitbucket.org/SilicaAndPina/activate.vpk/raw/3784cff547625041c0bf979ca3e79ec3487d94a7/app/sce_sys/icon0.png,https://bitbucket.org/SilicaAndPina/activate.vpk/downloads/activate-v1.3.vpk,https://store.brewology.com/vita/get/homebrew.php?id=738&fid=4670,https://bitbucket.org/SilicaAndPina/dolcepolce/raw/4399a37276fcaae5b252998ac219a5cc6c1a23d4/README.md,https://SilicaAndPina@bitbucket.org/SilicaAndPina/dolcepolce.git,0,none,none,VPK,none,True
+Example PLUGIN Entry:
+DolcePolce,DolcePolce,Dev: SilicaAndPina Beta Testing: Zodasaur & marburg & IcySon55 & froid_san & kirilldevchroma,none,https://github.com/KuromeSan/DolcePolce/releases/download/v1.0/DolcePolce.suprx,https://bitbucket.org/SilicaAndPina/dolcepolce/downloads/DolcePolce.suprx|https://store.brewology.com/vita/get/homebrew.php?id=773&fid=4708,https://raw.githubusercontent.com/KuromeSan/DolcePolce/master/README.md,git@github.com:KuromeSan/DolcePolce.git,0,TAI,*main,PLUGIN,none,True
+Example DATA Entry: 
+NPNA00171,Virtual Terminal,GTAWWEKID & Silica,https://github.com/SilicaAndPina/Virtual-Terminal-PSM-/raw/master/Icon/playstore-icon_128.png,https://github.com/KuromeSan/Virtual-Terminal-PSM-/releases/download/final/VirtualTerminal.psdp,http://psmreborn.com/psdp-packages/NPNA00171.psdp|http://psmreborn.com/psm-psdp/VirtualTerminal.psdp,https://raw.githubusercontent.com/KuromeSan/Virtual-Terminal-PSM-/master/README.md,git@github.com:KuromeSan/Virtual-Terminal-PSM-.git,0,none,ux0:/cache/PCSI00007,DATA,MakePsmGreatAgain,True
