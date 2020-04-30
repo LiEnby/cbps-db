@@ -1,7 +1,7 @@
 CBPS DB RFC #1337
 
 cbpsdb is a comma seperated values file, it shall have the following key:
-id,title,credits,icon0,download,download_mirror,download_readme,git,version,config_type,options,type,depends,visible
+id,title,credits,download_icon0,download_icon0_mirror,download_url,download_url_mirror,download_readme,download_readme_mirror,git,version,config_type,options,type,depends,visible
 - types/terminology.
 Unspecified values shall be defined with a string of 'none'
 'string' - 1 or more characters, (eg: 'Hello World!')
@@ -22,19 +22,25 @@ Unspecified values shall be defined with a string of 'none'
 
 'credits' a string containing infomration on who created this software
 
-'icon0' a string containing a direct URL to download a (128x128) icon0.png file.
+'download_icon0' a string containing a direct URL to download a (128x128) icon0.png file.
 	if none exists, leave it unspecified,
+
+'download_icon0_mirror' a list of alternative download links to icon0.png- in the event the main is down.
+	if there are none, leave this unspecified,
 	
-'download' a string contianing a URL to directly download the VPK/Skprx/Suprx
+'download_url' a string contianing a URL to directly download the VPK/Skprx/Suprx
 	this should not be a "download page" but rather the actural data
 	(eg: https://github.com/KuromeSan/DolcePolce/releases/download/v1.0/DolcePolce.suprx)
 	
-'download_mirror' a list of alternative download links in the event the main link is down 
+'download_url_mirror' a list of alternative download links in the event the main link is down 
 	(eg: https://bitbucket.org/SilicaAndPina/dolcepolce/downloads/DolcePolce.suprx|https://store.brewology.com/vita/get/homebrew.php?id=773&fid=4708)
 	the mirror links will be tried in sequental order.if there are no mirrors avalible, leave this unspecified.
 
 'download_readme' a direct link to the README file, (eg: https://bitbucket.org/SilicaAndPina/dolcepolce/raw/4399a37276fcaae5b252998ac219a5cc6c1a23d4/README.md
 	if there is none. leave unspecified	
+
+'download_icon0_mirror' a list of alternative downloads for the readme.md file-
+	in the event the main is down. if there are none, leave this unspecified,
 
 'version' a int starting at 0 and increments each time an entry is updated.
 
