@@ -1,7 +1,7 @@
 CBPS DB RFC #1337
 
 cbpsdb is a comma seperated values file, it shall have the following key:
-id,title,credits,download_icon0,download_icon0_mirror,download_url,download_url_mirror,download_readme,download_readme_mirror,git,version,config_type,options,type,depends,visible
+id,title,credits,download_icon0,download_icon0_mirror,download_url,download_url_mirror,download_readme,download_readme_mirror,download_src,download_src_mirror,version,config_type,options,type,depends,visible
 - types/terminology.
 Unspecified values shall be defined with a string of 'none'
 'string' - 1 or more characters, (eg: 'Hello World!')
@@ -42,11 +42,15 @@ Unspecified values shall be defined with a string of 'none'
 'download_icon0_mirror' a list of alternative downloads for the readme.md file-
 	in the event the main is down. if there are none, leave this unspecified,
 
-'version' a int starting at 0 and increments each time an entry is updated.
-
-'git' should be the direct link to the .git repository (if avalible) 
+'download_src' should be the direct link to the .git repository (if avalible) 
 	if the homebrew is not using GIT then it should be a direct link to the source code. 
 	if thats not avalible leave unspecified.
+
+'download_src_mirror' alternative link to download the source, wether it be an alt GIT repository,
+	or just a direct lnk to the source code. if there is no src avalible, leave this blank.
+	
+'version' a int starting at 0 and increments each time an entry is updated.
+
 
 'config_type' will define which config to place the plugin into, accepted values are 'TAI','BOOT
 	'TAI' will put it into the users perferered TaiHen configuration file (eg: "ux0:/tai/config.txt" or "ur0:/tai/config.txt")
@@ -74,7 +78,7 @@ Unspecified values shall be defined with a string of 'none'
 'visible' a boolean value specifying wether or not clients should display this entry in the main listing or not.
 
 Example VPK Entry:
-ACTIVATE0,activate.vpk,Silica & Zecoaxco,https://bitbucket.org/SilicaAndPina/activate.vpk/raw/3784cff547625041c0bf979ca3e79ec3487d94a7/app/sce_sys/icon0.png,https://bitbucket.org/SilicaAndPina/activate.vpk/downloads/activate-v1.3.vpk,https://store.brewology.com/vita/get/homebrew.php?id=738&fid=4670,https://bitbucket.org/SilicaAndPina/dolcepolce/raw/4399a37276fcaae5b252998ac219a5cc6c1a23d4/README.md,https://SilicaAndPina@bitbucket.org/SilicaAndPina/dolcepolce.git,0,none,none,VPK,none,True
+ACTIVATE0,activate.vpk,Silica & Zecoaxco,https://bitbucket.org/SilicaAndPina/activate.vpk/raw/3784cff547625041c0bf979ca3e79ec3487d94a7/app/sce_sys/icon0.png,https://github.com/KuromeSan/cbps-db/blob/master/icons/ACTIVATE0_29b85d2f.png?raw=true,https://bitbucket.org/SilicaAndPina/activate.vpk/downloads/activate-v1.3.vpk,https://store.brewology.com/vita/get/homebrew.php?id=738&fid=4670,https://bitbucket.org/SilicaAndPina/dolcepolce/raw/4399a37276fcaae5b252998ac219a5cc6c1a23d4/README.md,https://SilicaAndPina@bitbucket.org/SilicaAndPina/dolcepolce.git,0,none,none,VPK,none,True
 Example PLUGIN Entry:
 DolcePolce,DolcePolce,Dev: SilicaAndPina Beta Testing: Zodasaur & marburg & IcySon55 & froid_san & kirilldevchroma,none,https://github.com/KuromeSan/DolcePolce/releases/download/v1.0/DolcePolce.suprx,https://bitbucket.org/SilicaAndPina/dolcepolce/downloads/DolcePolce.suprx|https://store.brewology.com/vita/get/homebrew.php?id=773&fid=4708,https://raw.githubusercontent.com/KuromeSan/DolcePolce/master/README.md,git@github.com:KuromeSan/DolcePolce.git,0,TAI,*main,PLUGIN,none,True
 Example DATA Entry: 
