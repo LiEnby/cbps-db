@@ -39,15 +39,15 @@ Unspecified values shall be defined with a string of 'none'
 'download_readme' a direct link to the README file, (eg: https://bitbucket.org/SilicaAndPina/dolcepolce/raw/4399a37276fcaae5b252998ac219a5cc6c1a23d4/README.md
 	if there is none. leave unspecified	
 
-'download_icon0_mirror' a list of alternative downloads for the readme.md file-
+'download_readme_mirror' a list of alternative downloads for the readme.md file-
 	in the event the main is down. if there are none, leave this unspecified,
 
 'download_src' should be the direct link to the .git repository (if avalible) 
 	if the homebrew is not using GIT then it should be a direct link to the source code. 
 	if thats not avalible leave unspecified.
 
-'download_src_mirror' alternative link to download the source, wether it be an alt GIT repository,
-	or just a direct lnk to the source code. if there is no src avalible, leave this blank.
+'download_src_mirror' list of alternative links to download the source, wether it be an alt GIT repository,
+	or just a direct lnk to the source code. if there is none leave this blank.
 	
 'version' a int starting at 0 and increments each time an entry is updated.
 
