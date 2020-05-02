@@ -1,7 +1,7 @@
 CBPS DB RFC #1337
 
 cbpsdb is a comma seperated values file, it shall have the following key:
-id,title,credits,download_icon0,download_icon0_mirror,download_url,download_url_mirror,download_readme,download_readme_mirror,download_src,download_src_mirror,version,config_type,options,type,depends,visible
+id,title,credits,download_icon0,download_icon0_mirror,download_url,download_url_mirror,download_readme,download_readme_mirror,download_src,download_src_mirror,time_added,config_type,options,type,depends,visible
 - types/terminology.
 Unspecified values shall be defined with a string of 'none'
 'string' - 1 or more characters, (eg: 'Hello World!')
@@ -49,8 +49,8 @@ Unspecified values shall be defined with a string of 'none'
 'download_src_mirror' list of alternative links to download the source, wether it be an alt GIT repository,
 	or just a direct lnk to the source code. if there is none leave this blank.
 	
-'version' a int starting at 0 and increments each time an entry is updated.
-
+'time_added' a int representing the time in miliseconds since 1/1/1970 in UTC+00 which this entry was added
+to the database.
 
 'config_type' will define which config to place the plugin into, accepted values are 'TAI','BOOT
 	'TAI' will put it into the users perferered TaiHen configuration file (eg: "ux0:/tai/config.txt" or "ur0:/tai/config.txt")
