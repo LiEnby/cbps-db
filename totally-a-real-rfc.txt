@@ -47,7 +47,7 @@ Unspecified values shall be defined with a string of 'none'
 	if thats not avalible leave unspecified.
 
 'download_src_mirror' list of alternative links to download the source, wether it be an alt GIT repository,
-	or just a direct lnk to the source code. if there is none leave this blank.
+	or just a direct lnk to the source code. if there is none leave this unspecified.
 	
 'time_added' a int representing the time in miliseconds since 1/1/1970 in UTC+00 which this entry was added
 to the database.
