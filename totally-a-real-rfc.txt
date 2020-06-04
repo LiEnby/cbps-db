@@ -64,6 +64,7 @@ to the database.
 		example if you specified 'load os0:/kd/npdrm.skprx|- load' then the result would be like 
 			load os0:/kd/npdrm.skprx
 			- load ur0:/tai/your-module.skprx
+		you can also use "START" to specify the start of the file.
 
 'type' a string of the type, accepted values are 'VPK','PLUGIN','DATA'
 	'VPK' is for vita apps, when used do not specify 'config_type' and 'options'
