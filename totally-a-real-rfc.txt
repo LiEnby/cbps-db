@@ -60,6 +60,7 @@ to the database.
 'options' a list containing where to place the plugin in the configuration file.
 	when 'type' is 'DATA' specify a string containing the path to extract the data files too.
 	for 'config_type' of 'TAI' specify a list containing what modules to load under (eg: '*PCSI00009|*PCSI00007')
+	you can also specify the option of "None" and then the user has to decide where to install it
 	for 'config_type' of 'BOOT' specify a list containing the line to insert it under and what command to use 
 		example if you specified 'load os0:/kd/npdrm.skprx|- load' then the result would be like 
 			load os0:/kd/npdrm.skprx
