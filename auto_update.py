@@ -48,6 +48,9 @@ def check_update_github(row):
         owner, repo = row["download_url"].split("/")[3:5]
         old_filename = row["download_url"].split("/")[-1]
         repo_url = f"https://github.com/{owner}/{repo}"
+        if repo == "VitaTweaks":
+            "ignore vitatweaks because weird releases"
+            return row
 
         # get releases
         resp = gh_s.get(f"https://api.github.com/repos/{owner}/{repo}/releases")
