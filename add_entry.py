@@ -18,7 +18,7 @@ s.headers.update({
 })
 
 gh_s = requests.Session()
-gh_token = os.getenv("GITHUB_TOKEN") or "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"
+gh_token = os.getenv("GITHUB_TOKEN")
 gh_s.headers.update({
     "authorization": "Bearer "+gh_token
 })
