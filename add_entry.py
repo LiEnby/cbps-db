@@ -20,7 +20,7 @@ s.headers.update({
 gh_s = requests.Session()
 gh_token = os.getenv("GITHUB_TOKEN")
 gh_s.headers.update({
-    "authorization": "Bearer "+gh_token
+#    "authorization": "Bearer "+gh_token
 })
 
 def crc32(string: str):
